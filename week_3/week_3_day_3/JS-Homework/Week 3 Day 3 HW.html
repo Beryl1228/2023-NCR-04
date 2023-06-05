@@ -1,0 +1,164 @@
+<!-- The Command Line
+Make a directory called software_homeworkusing the command line tool of your choice i.e Hyper
+Inside the directory make 5 subdirectories unit_1, unit_2, unit_3, unit_4, projects
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Day 3 HW</title>
+</head>
+<script>
+class Governor {
+   static name = "Wes Moore";
+   static state  = "Maryland";
+   static party = "democratic";
+   static test( ){
+        return `This is the governor of our state`
+  };
+}
+
+console.log(Governor.test());
+console.log(`${Governor.name} is the governor of ${Governor.state}, 
+he belongs to ${Governor.party} party.`)
+
+
+/* Think of three properties all people share, set them with the constructor
+Think of three methods all people share
+Create a PostalWorker class that inherits from person, add some methods
+Create a Chef class that inherits from person, add some methods
+Create 2 PostalWorkers and 2 Chefs, log them and test all their methods
+ */
+class Person{
+    constructor(name, salary, healthinsurance){
+      this.name = name;
+      this.salary = salary;
+      this.healthinsurance = healthinsurance;
+    }
+
+    getPaid(){
+        console.log(`${this.name} Get paid biweekly $${this.salary}.`);
+    }
+
+    withBenefit(){
+        console.log(`${this.name}'s job provided with ${this.healthinsurance} insurance.`);
+    }
+}
+
+class PostalWorker extends Person{
+    constructor(name,salary, healthinsurance,uniform){
+         super(name,salary, healthinsurance);
+         this.uniform = uniform;
+    }
+    
+    requires(drugtest){
+        console.log(`${this.name}'s job requires ${drugtest} and wears '${this.uniform}' unifrom.`)
+    }
+    
+    getPaid(){
+        super.getPaid()
+    }
+}
+
+class Chef extends Person{
+    constructor(name, salary, healthinsurance,certificate){
+         super(name, salary, healthinsurance);
+         this.certificate = certificate;
+    }
+    
+    gain(){
+        console.log(`${this.name}'s job comes with a '${this.certificate}' certificate.`);
+    }
+    
+    provide(workmeal){
+       console.log(`${this.name}'s' job provides ${workmeal}.`)
+    }
+}
+
+const PW1 = new PostalWorker('Jim', 2200,'cigna','USPS');
+const PW2 = new PostalWorker('Lily', 2500,'bluecross','UPS');
+const CF1 = new Chef('Tom', 3200,'kaiser','Top Chef');
+const CF2 = new Chef('Rose', 2900,'aetna', 'Culinary School');
+
+console.log(PW1);
+PW1.getPaid();
+PW1.withBenefit();
+PW1.requires('drugtest');
+
+console.log(PW2);
+PW2.getPaid();
+PW2.withBenefit();
+PW2.requires('drugtest');
+
+console.log(CF1);
+CF1.getPaid();
+CF1.withBenefit();
+CF1.gain();
+CF1.provide('free meal');
+
+console.log(CF2);
+CF2.getPaid();
+CF2.withBenefit();
+CF2.gain();
+CF2.provide('free lunch');
+
+
+class BankAccount {
+    constructor(ownerName,balance,acctNum){
+      this.ownerName = ownerName;
+      this.balance = balance;
+      this.acctNum = acctNum;
+    }
+
+    deposit(){
+       console.log(`Account:'${this.acctNum} 'has a daily deposit limit, which is $20,000.`)
+    };
+
+    withdraw(){
+        console.log(`Daily withdraw Limit is $3,000.`)
+    };
+    
+}
+
+class CheckingAccount extends BankAccount {
+    constructor(ownerName,balance,acctNum,overdraftEnabled){
+        super(ownerName,balance,acctNum);
+        this.overdrafeEnabled = overdraftEnabled;    
+    }
+    
+    withdraw(){
+        console.log(`Doesn't provide overdraft protection.`)
+    }
+
+}
+
+class SavingsAccount extends BankAccount {
+    constructor(ownerName,balance,acctNum){
+        super(ownerName,balance,acctNum);  
+    }
+    
+    withdraw(){
+        console.log('withdraw is not allowed')
+    }
+
+}
+
+
+let Chase = new CheckingAccount('Adam','$50,688.00','7256498237','Insufficient Funds Fee');
+let Boa = new SavingsAccount('Dave','$4896.12','987656897655')
+
+console.log(Chase);
+Chase.deposit();
+Chase.withdraw();
+
+console.log(Boa);
+Boa.withdraw();
+
+
+</script>
+<body>
+    
+</body>
+</html>
