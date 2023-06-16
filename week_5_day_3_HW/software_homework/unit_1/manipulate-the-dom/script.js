@@ -28,7 +28,7 @@ var ul = document.querySelector("#favorite-things");
 ul.removeChild(ul.lastElementChild);
 
 // Part 4
-var Titles = document.querySelector(".special-title");
+var Titles = document.querySelectorAll(".special-title");
 Titles.style.fontSize = "2rem";
 
   // Part 5
