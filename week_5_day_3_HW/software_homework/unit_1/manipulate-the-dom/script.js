@@ -29,7 +29,9 @@ ul.removeChild(ul.lastElementChild);
 
 // Part 4
 var Titles = document.querySelectorAll(".special-title");
-Titles.style.fontSize = "2rem";
+Titles.forEach(title =>
+  title.style.fontSize = "2rem");
+
 
   // Part 5
   var ulElement = document.querySelector("#past-races");
