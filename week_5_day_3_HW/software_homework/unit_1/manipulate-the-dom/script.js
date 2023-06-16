@@ -72,18 +72,25 @@ parentDiv.appendChild(NewDiv);
 
   
   // Part 9
-const blogpost = document.querySelector('.blog-post');
+const blogpost = document.querySelectorAll('.blog-post');
 
-parentDiv.addEventListener("mouseout", (event) => {
-  if (event.target.classList.contains("blog-post")) {
-    event.target.style.color = "#98FB98";
-  }
+blogpost.forEach(function(post) {
+  // Add event handlers for mouseout and mouseenter
+  post.addEventListener('mouseout', mouseOutHandler);
+  post.addEventListener('mouseenter', mouseEnterHandler);
 });
 
-blogpost.addEventListener("mouseenter", (event) => {
-  if (event.target.classList.contains("blog-post")) {
-    event.target.style.color = "PapayaWhip";
-  }
-});
+// Mouseout event handler
+function mouseOutHandler(event) {
+  // Toggle the class .purple
+  this.classList.toggle('purple');
+}
+
+// Mouseenter event handler
+function mouseEnterHandler(event) {
+  // Toggle the class .red
+  this.classList.toggle('red');
+}
 
 });
+
