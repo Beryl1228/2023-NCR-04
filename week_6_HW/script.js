@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         currentShip.attack(playerShip);
     
         if (playerShip.hull <= 0) {
-          console.log("Your ship was destroyed! Game over. Press restart if you wish to play again");
+          console.log("Your ship was destroyed! Game over. Press reset if you wish to play again");
         } else {
           gamePrompt.textContent = "Continue the battle by clicking the Resume button or click retreat to take a break";
         }
@@ -210,7 +210,7 @@ function retreatGame() {
     // Add the appropriate logic here, such as resetting the game or displaying a message. 
     game.isGameOver = true;
     resumeBtn.disabled = true; 
-    restartBtn.disabled = false;// Enable the play button for a new game
+    resetBtn.disabled = false;// Enable the play button for a new game
 }
 
 // Function to resume the game when the resume button is clicked
