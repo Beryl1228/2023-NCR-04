@@ -1,5 +1,5 @@
 body {
-  background: #f5f5f5;
+  background: hsl(136, 31%, 84%);
   overflow: hidden;
 }
 
@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   /* decide the perspective of the dice to left and top for 50% */
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0); 
   /* making sure 3D effect */
   transform-style: preserve-3d; 
 }
@@ -19,11 +19,12 @@ body {
   margin: 1em;
   width: 50px;
   height: 50px;
-  /* 表示绕Y轴和X轴旋转-10度和-15度(也就是逆时针旋转） rotate Y for counterclockwise 10deg */
-  transform: rotateY(-15deg) rotateX(-10deg);
+  /* 表示绕Y轴和X轴旋转-20度(也就是逆时针旋转） rotate Y for counterclockwise 10deg */
   transform-style: preserve-3d;
+  transform: rotateX(-65deg) rotateY(45deg) rotateZ(0deg);
   transition-property: transform;
   transition-timing-function: ease-out;
+  /* animation: rotate-cube 10s linear infinite; */
 }
 
 
@@ -31,49 +32,51 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
-  color: #fff;
-  font-weight: bold;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 50px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transform-style: preserve-3d;
-  background-image: url("https://t3.ftcdn.net/jpg/04/48/30/30/360_F_448303095_Ufouzkj2EnumSO5mDLz0kr7XNW9hVOVo.jpg");
-  background-size: 170px;
-  box-sizing: border-box;
+  background-color: rgb(233, 235, 237);
+  border: 1px solid #efe9e9;
 }
 
 
+
+.front {
+  transform: translateZ(25px);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dice-1.svg/640px-Dice-1.svg.png");
+  background-size: 50px;
+
+}
+
+.back {
+  transform: translateZ(-25px);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Dice-4.svg/640px-Dice-4.svg.png");
+  background-size: 50px; 
+}
 
 .top {
   transform: rotateX(90deg) translateZ(25px);
-  background-position: -5px -62px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Dice-5-b.svg/640px-Dice-5-b.svg.png");
+  background-size: 50px;  
 }
+
 .bottom {
-  transform: rotateX(-90deg) translateZ(25px);
-  background-position: -289px -5px;
+  transform: rotateX(90deg) translateZ(-25px);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dice-2-b.svg/640px-Dice-2-b.svg.png");
+  background-size: 50px;
 }
-.front {
-  transform: translateZ(25px);
-  background-position: -5px -5px;
-}
+
 .right {
   transform: rotateY(90deg) translateZ(25px);
-  background-position: -232px -5px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dice-3-b.svg/640px-Dice-3-b.svg.png");
+  background-size: 50px;
 }
-.back {
-  transform: rotateY(180deg) translateZ(25px);
-  background-position: -289px -62px;
-}
+
+
 .left {
-  transform: rotateY(270deg) translateZ(25px);
-  background-position: -232px -62px;
+  transform: rotateY(90deg) translateZ(-25px);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Dice-6a-b.svg/640px-Dice-6a-b.svg.png");
+  background-size: 50px;
 }
-
-
-@keyframes rotate-cube{
+/* making animation for the cube to roll */
+/* @keyframes rotate-cube{
   form{
       transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg)
   }
@@ -81,8 +84,8 @@ body {
   to{
     transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg)
   }
-}
-
+} 
+*/
 ctrl{
   display: inline-block;
   text-align: center;
@@ -91,10 +94,3 @@ ctrl{
   font-weight: 500;
   line-height: 1.5;
 }
-
-
-/* <div class="right" value="3"></div>
-<div class="bottom" value="2"></div>
-<div class="top" value="5"></div>
-<div class="left" value="6"></div>
-<div class="back" value="4"></div> */

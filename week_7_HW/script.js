@@ -16,10 +16,142 @@ If the computer reaches 12 points,, the player loses the game.
 If both the player and the computer both have 12 points at the same time, an additional round is played until a winner is determined.
 
 */
+ const ANGLE = {
+  1: {
+    x: 45,
+    y: 0,
+    z: 65
+  },
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  
-  let dice1 = document.querySelector('#cube1'); //parentDiv
+  2: {
+    x: 135,
+    y: 45,
+    z: 0
+   },
+
+  3: {
+    x: 135,
+    y: 115,
+    z: 90
+   },
+
+  4: {
+    x: 45,
+    y: 180,
+    z: 65
+   },
+
+  5: {
+    x: -65,
+    y: 45,
+    z: 0
+  },
+
+  6: {
+    x: -65,
+    y: 45,
+    z: 90
+  }
+};
+
+    
+    //make dices's num as a array
+    let dices = Array.prototype.slice.call(document.querySelectorAll('.cubic')); 
+    let speed = 3000;
+    
+    let angleGenerator = () => {
+      let factor = Math.floor(Math.random() * 6 + 1 ); //(test the angle in browser) to get numbers from 1 - 6
+      let { x, y, z } = ANGLE[factor];
+      return {
+        x: x + 3600,
+        y: y + 3600,
+        z: z + 3600,
+        num: factor // get the dice number
+      };
+        
+    };
+    
+    
+    //play's turn to play
+    let playerPlay = () => {
+      let nums = [ ]; // put the dice's number in an array
+        
+      dices.forEach(dice => {
+        let { x, y, z, num } = angleGenerator();
+    
+        setTimeout(() => {
+          // request render
+          dice.style.cssText = `
+                    -webkit-transition-duration: ${speed}ms;
+                            transition-duration: ${speed}ms;
+                    -webkit-transform: rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg);
+                            transform: rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg);
+                `;
+          nums.push(num); // push the num into the nums array
+          if (nums.length === dices.length) {
+              // 所有骰子都投掷完成(after all the dice was done rotation)
+              let sum = nums.reduce((acc, curr) => acc + curr, 0); // 数字相加求和
+              console.log(`You Got ${sum} !!`);
+            }
+        }, 10);
+      });
+        //  console.log(nums);
+    };
+    
+    
+
+  const playBtn = document.getElementById('playBtn');
+  playBtn.addEventListener('click', playGame);
+
+  let gamePrompt = document.querySelector('h2');
+
+
+
+  //computer's turn to play
+  var computer;
+  function pcPlay() {
+    computer = setTimeout(pcScore, 2000);
+}
+
+function pcScore() {
+
+  gamePrompt.textContent = `Computer got ${pcSum} !!!`
+};
+
+//check win condition
+function checkWin(){
+  if (sum != 12 && pcSum == 12) {
+    window.alert(`You lost! computer Win!`);
+  } else if (sum == 12 && pcSum != 12) {
+    window.alert(`You Win! computer lost!`);
+  } else if (sum != 12 && pcSum != 12) {
+    window.alert("One more round to detemine the winner!" )
+  }
+}
+
+// Function to start the game when the play button is clicked
+function playGame() {
+  playerPlay();
+  // playBtn.disabled = true; // Disable the play button once the game starts
+  pcPlay();
+  checkWin();
+  // nextBtn.disabled = false;
+} 
+
+
+
+
+  //   const 
+  //   document.querySelector('#speed').addEventListener('change', ({ target }) => {
+  //     speed = (parseFloat(target.value) || 1) * 1000;
+  //     target.value = speed / 1000;
+  //   });
+
+
+
+
+
+  /* let dice1 = document.querySelector('#cube1'); //parentDiv
   let dice2 = document.querySelector('#cube2');
   let dice3 = document.querySelector('#cube3');
 
@@ -58,38 +190,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
   
 
-  const playBtn = document.getElementById('playBtn');
-  playBtn.addEventListener('click', playGame);
+
 
   // const nextBtn = document.getElementById('nextBtn');
   // nextBtn.addEventListener('click', nextGame);
   
-  let gamePrompt = document.querySelector('h2');
-
   
-  //computer's turn to play
-  var computer;
-  function pcPlay() {
-    computer = setTimeout(pcScore, 2000);
-}
 
-function pcScore() {
-  gamePrompt.textContent = `Computer got ${pcSum} !!!`
-};
 
-function checkWin(){
-  if (sum != 12 && pcSum == 12) {
-    window.alert(`You lost! computer Win!`);
-  } else if (sum == 12 && pcSum != 12) {
-    window.alert(`You Win! computer lost!`);
-  } else if (sum != 12 && pcSum != 12) {
-    window.alert("One more round to detemine the winner!" )
-  }
-}
-
-function playerPlay(){
-  gamePrompt.textContent = `You got ${sum} !!!`
-}
 
 
 const cube = document.querySelectorAll('.cubic');
@@ -100,14 +208,7 @@ function rotateCube() {
 
 rotateCube();
 
-// Function to start the game when the play button is clicked
-function playGame() {
-  playerPlay();
-  // playBtn.disabled = true; // Disable the play button once the game starts
-  pcPlay();
-  checkWin();
-  // nextBtn.disabled = false;
-}
+
 
 
 // gamePrompt.textContent = "One more round to detemine the winner!"
@@ -135,5 +236,6 @@ function nextGame() {
   checkWin();
   reloadPage();
  }
-});
 
+
+ */
