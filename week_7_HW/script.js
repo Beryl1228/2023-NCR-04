@@ -91,26 +91,33 @@ const ANGLE = {
           if (nums.length === dices.length) {
               // 所有骰子都投掷完成(after all the dice was done rotation)
               sum = nums.reduce((total, currentNum) => total + currentNum, 0); // 数字相加求和，start from 0, adding nums to sum 
-              gamePrompt.textContent = `You Got ${sum} !!`;
-              checkWin()
-              // setTimeout(reset, speed + 2000)
+              setTimeout(function() {gamePrompt.textContent = `You Got ${sum} !!!`},speed);
+              setTimeout(function() {gameTxt.textContent = `Now it's the conputuer's turn`},speed+1000)
             }
         }, 30);
       });
     };
     
-    reset = () => {
-      dices.forEach(dice => { 
-        dice.style.cssText = ''; 
-      });
-    }
+   
 
-  //computer's turn to play
+//computer's turn to play
+    let pcAngleGenerator = () => {
+      let factor = Math.floor(Math.random() * 6 + 1);
+      let { x, y, z } = ANGLE[factor];
+      return {
+        x: x+1800,
+        y: y+1800,
+        z: z+1800,
+        num: factor
+      };
+    };
+    
+ 
     let pcPlay = () => {
       let nums = [ ]; // put the dice's number in an array for
         
-      dices.forEach(dice => {
-        let { x, y, z, num } = angleGenerator();
+      dices.forEach(dice=> {
+        let { x, y, z, num } = pcAngleGenerator();
     
         setTimeout(() => {
           // request render 
@@ -122,8 +129,8 @@ const ANGLE = {
           if (nums.length === dices.length) {
               // 所有骰子都投掷完成(after all the dice was done rotation)
               pcSum = nums.reduce((total, currentNum) => total + currentNum, 0); // 数字相加求和，start from 0, adding nums to sum 
-              gamePrompt.textContent = `Computer Got ${pcSum} !!`;  
-              checkWin()
+              setTimeout(function() {gamePrompt.textContent = `Computer Got ${pcSum}`},2800);
+              gameTxt.textContent = " ";
             }
         }, 30);
       });
@@ -138,38 +145,37 @@ const ANGLE = {
         } else if (sum == 12 && pcSum != 12) {
           window.alert(`You Win! computer lost!`);
         } else if (sum != 12 && pcSum != 12) {
-          window.alert("Click play again to determine the winner!");
-          playBtn.disabled = false;
+          continueBtn.disabled = false; 
+          window.alert("Click continue to determine the winner!"); 
         }
-      }, 6000);
+      }, 8000);
 }
 
 
-/* 
-function afterPlayerCallback() {
-  pcPlay()
-} */
+
 
 // Function to start the game when the play button is clicked
 function playGame() {
-  // playerPlay(afterPlayerCallback);
   playerPlay();
-  setTimeout("reset()",5000);
-  setTimeout("pcPlay()",3000)
+  setTimeout("pcPlay()",5000)
+  checkWin();
   playBtn.disabled = true; // Disable the play button once the game starts
-  continueBtn.disabled = false; 
 } 
 
 
 const playBtn = document.getElementById('playBtn');
 playBtn.addEventListener('click', playGame);
 
-const continueBtn = document.getElementById('playBtn');
+const continueBtn = document.getElementById('continueBtn');
 continueBtn.addEventListener('click', playGame);
 
 var gamePrompt = document.querySelector('h2');
 
+var gameTxt = document.querySelector('h3');
+
  
+
+
 /* reset = () => {
         dices.forEach(dice => { 
           dice.style.cssText = ''; 
