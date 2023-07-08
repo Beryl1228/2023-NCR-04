@@ -92,7 +92,7 @@ const ANGLE = {
               // 所有骰子都投掷完成(after all the dice was done rotation)
               sum = nums.reduce((total, currentNum) => total + currentNum, 0); // 数字相加求和，start from 0, adding nums to sum 
               setTimeout(function() {gamePrompt.textContent = `You Got ${sum} !!!`},speed);
-              setTimeout(function() {gameTxt.textContent = `Now it's the conputuer's turn`},speed+1000)
+              setTimeout(function() {gameTxt.textContent = `Now it's the conputuer's turn`},speed);
             }
         }, 30);
       });
@@ -147,6 +147,9 @@ const ANGLE = {
         } else if (sum != 12 && pcSum != 12) {
           continueBtn.disabled = false; 
           window.alert("Click continue to determine the winner!"); 
+        } else if (sum == 12 && pcSum == 12) {
+          continueBtn.disabled = false; 
+          window.alert("Click continue to determine the winner!"); 
         }
       }, 8000);
 }
@@ -157,10 +160,20 @@ const ANGLE = {
 // Function to start the game when the play button is clicked
 function playGame() {
   playerPlay();
+  playSoundEffect()
   setTimeout("pcPlay()",5000)
   checkWin();
   playBtn.disabled = true; // Disable the play button once the game starts
 } 
+
+
+let rollingSound = document.getElementById("rollingMusic");
+
+function playSoundEffect(){
+  rollingSound.play();
+  // rollingSound.loop = true;
+}
+
 
 
 const playBtn = document.getElementById('playBtn');
@@ -193,3 +206,28 @@ var gameTxt = document.querySelector('h3');
         // clikcing "continue" called pcPlay
       }
        */
+
+
+//add background music option
+let bgMusic = document.getElementById("bg-music");
+
+// playmusic 
+let playMusic = document.getElementById("playMusic");
+playMusic.addEventListener("click", function() {
+    bgMusic.play();
+    bgMusic.loop = true;
+});
+
+// pausemusic
+let pauseMusic = document.getElementById("pauseMusic");
+pauseMusic.addEventListener("click", function() {
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+});
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   setTimeout(() => {
+//       bgMusic.play();
+//       console.log("playing")
+//   }, 1000)
+// });

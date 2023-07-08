@@ -112,7 +112,12 @@ h3{
   font-family: Arial, Helvetica, sans-serif;
   font-size:30px;
   font-weight: 400;
-  color: #21396f;
+  color: #2f1fc2;
+  background-color: #dede49;
+  width:450px;
+  top:150px;
+  text-align: center;
+  left: 35%;
 }
 
 #ctrl{
@@ -161,3 +166,11 @@ h3{
   border-color: #adb197;
   outline: none;
 }
+
+
+#Music{
+  position: fixed;
+  top:20px;
+  right:20px;
+};
+
