@@ -16,6 +16,7 @@ If the computer reaches 12 points,, the player loses the game.
 If both the player and the computer both have 12 points at the same time, an additional round is played until a winner is determined.
 
 */
+//define angles of different dice number 
 const ANGLE = {
   1: {
     x: 45,
