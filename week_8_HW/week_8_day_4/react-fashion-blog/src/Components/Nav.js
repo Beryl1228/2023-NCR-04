@@ -1,23 +1,20 @@
 import React from 'react';
 
-const Footer = () => {
+const Nav = () => {
     return (
-        <footer>
+        <div>
             <nav aria-label="Main Navigation" role="navigation">
                 <ul className="unorderedlist">
-                    <li><a href="...">Home</a></li>
                     <li><a href="...">Women's</a></li>
                     <li><a href="...">Men's</a></li>
                     <li><a href="...">On the Street</a></li>
                     <li><a href="...">The Catwalk</a></li>
                     <li><a href="...">AdWatch</a></li>
                     <li><a href="...">About</a></li>
-                    <li><a href="...">Tips</a></li>
                 </ul>
             </nav>
-            <p>&copy; 2013valet Industries</p>
-        </footer>
+        </div>
     );
 };
 
-export default Footer;
+export default Nav;
