@@ -1,0 +1,23 @@
+.textinput {
+  display: block;
+  width: auto;
+  text-align: center;
+  margin:0 auto;
+}
+
+/* Button Styles */
+button {
+  display: block;
+  padding: 10px 20px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin:0 auto;
+  margin-top: 10px
+}
+
+h1{
+  text-align: center;
+}
