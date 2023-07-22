@@ -4,7 +4,7 @@ import "./App.css"
 function App() {
   return (
     <div className="App">
-    <h1>Check if your credit number is valid!</h1>
+    <h1>Check if your Credit Card number is valid!</h1>
     <TextInput />
     </div>
   );
