@@ -1,3 +1,17 @@
+#[Netlify Live Link]
+https://react-star-wars-beryl-liu.netlify.app/
+
+
+
+
+
+#[Github pages Live Link]
+https://github.com/Beryl1228/2023-NCR-04/tree/main/week_9/week_9_day_4/Lab/react-star-wars
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
