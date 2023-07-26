@@ -1,0 +1,44 @@
+.App{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+.nav{
+  background-color: #5D36C3;
+  display: flex;
+  padding: 10px 0;
+  font-size: 18px;
+  text-decoration: none; 
+  align-items: center; 
+}
+
+.nav a {
+  color: white;
+  text-decoration: none; 
+  padding: 5px 10px; 
+  transition: color 0.2s; 
+}
+
+.nav a:first-child {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+
+
+.stockpage{
+  padding-left: 20px;
+}
+
+a {
+  font-size: 18px;
+  /* Adding a hover effect to links */
+  transition: color 0.2s;
+}
+
+
+a:hover {
+  /* Changing the link color to dark blue on hover */
+  color: #0056b3;
+}
