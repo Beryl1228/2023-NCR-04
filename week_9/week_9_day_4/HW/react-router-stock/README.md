@@ -1,3 +1,15 @@
+[Netlify Live Link]
+https://react-router-stock.netlify.app/
+
+
+
+[Github pages Live Link]
+https://github.com/Beryl1228/2023-NCR-04/tree/main/week_9/week_9_day_4/HW/react-router-stock
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
