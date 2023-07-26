@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+  font-family: "Arial";
+  font-weight: lighter;
+}
+
+h1{
+  background-color:#292B33;
+  color: white;
+  width: 100%;
+}
+
+.CardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+
+.Card {
+  padding: 10px;
+  color: white;
+  background-color: #354E4E;
+  flex-basis: 25%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+
