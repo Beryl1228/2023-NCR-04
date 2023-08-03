@@ -1,0 +1,35 @@
+/* Reset default margin and padding */
+* {
+  padding: 0;
+}
+
+/* Set the base font size and font family */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Set global styles for links */
+a {
+  color: #513A1A; /* Blue link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Set some default spacing for elements */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+/* Add more global styles as needed */
+
+/* Custom styles for specific components or pages can be added here */
+
