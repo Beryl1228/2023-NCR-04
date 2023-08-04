@@ -100,3 +100,32 @@ p{
   color: #593521;
   font-style: italic;
 }
+
+.cart-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cart-container h2 {
+  margin-bottom: 10px;
+}
+
+.cart-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-container li {
+  margin-bottom: 5px;
+}
+
+.cart-container p {
+  margin-top: 10px;
+}

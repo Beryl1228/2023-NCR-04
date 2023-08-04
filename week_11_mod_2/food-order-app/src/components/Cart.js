@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "../styles/global.css"
 
 const Cart = ({ items }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -13,7 +14,7 @@ const Cart = ({ items }) => {
   }, [items]);
 
   return (
-    <div>
+    <div className='cart-container'>
       <h2>Cart</h2>
       <ul>
         {items.map((item) => (
