@@ -1,50 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import fetchData from '../data';
 import CountButton from '../components/CountButton';
 import styled from 'styled-components';
-
+import HoverText from '../components/HoverText';
+import "../styles/global.css";
 
 const Wrapper = styled.div`
    padding-left: 100px;
-  display: flex;
-  flex-direction: row;
-
+   display: flex;
+   flex-direction: row;
 `;
 
+const MenuPage = ({ menuData, onAddToCart }) => {
 
-const MenuPage = (props) => {
-  const [menuItem, setMenuItem] = useState([]);
- 
-  console.log(props)
-
-  useEffect(() => {
-    const fetchMenuData = async () => {
-      const data = await fetchData();
-      console.log(data); // 添加这行来查看返回的数据
-      if (Array.isArray(data)) {
-        setMenuItem(data);
-      }
-    };
-
-    fetchMenuData();
-  }, []);
-
-  // const price = burger.price;
+  if (!onAddToCart) {
+    console.error("onAddToCart is not defined")
+  }
 
   return (
     <div>
       <h1>Menu</h1>
-      
-      {/* 在这里使用 menuData 显示数据 */}
-      {menuItem.map((burger) => (
-        <div key={burger.id}>
-          <main>
-          <h2>{burger.name}</h2>
-          <img src={burger.image_url} alt={burger.name} />
-          <p>{burger.description}</p>
-          </main>
+      {menuData.map((item) => (
+        <div className='burgerContainer' key={item.id}>
+          <div className='burgerList'>
+            <h2>{item.name}</h2>
+            <HoverText item={item} />
+            <p>{item.description}</p>
+          </div>
           <Wrapper>
-          <aside><CountButton price={burger.price}  /></aside>
+            <aside>
+              <CountButton item={item} onAddToCart={onAddToCart} price={item.price} />
+            </aside>
           </Wrapper>
         </div>
       ))}

@@ -8,6 +8,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  
 }
 
 /* Set global styles for links */
@@ -20,16 +21,82 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Set some default spacing for elements */
 .container {
+  position: relative; /* 确保容器可以作为定位的参考 */
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
+.countbutton {
+  position: absolute; /* 绝对定位 */
+  top:auto;
+  right:35%; /* 右边距为 0，将组件置于页面右侧 */
+  display: flex;
+  flex-direction: row; /* 将按钮纵向排列 */
+  align-items: flex-end; /* 将按钮靠右对齐 */
+}
 
 
-/* Add more global styles as needed */
+.popup-style {
+  white-space: pre-wrap;
+  color: #351F0A;
+  position: absolute;
+  top:auto;
+  left: 50%;
+  font-size: 15px;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: #F4DFB7;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
 
-/* Custom styles for specific components or pages can be added here */
+.WrapperText{
+  margin: 20px;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center; 
+}
 
+/* 默认按钮样式 */
+.addtoCart {
+  background-color: #CFB96A; /* 背景颜色 */
+  color: #fff; /* 文字颜色 */
+  border: none; /* 去掉边框 */
+  padding: 10px 20px; /* 按钮内边距 */
+  border-radius: 4px; /* 圆角 */
+  cursor: pointer; /* 鼠标指针样式为手型 */
+  font-size: 15px; /* 文字大小 */
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+  margin-left: 15px;
+  margin-top: 5px; 
+}
+
+/* 按钮悬停样式 */
+.addtoCart:hover {
+  background-color: #93813f; /* 悬停时的背景颜色 */
+}
+
+/* 按钮点击样式 */
+.addtoCart:active {
+  background-color: #eddda4; /* 按钮被点击时的背景颜色 */
+}
+
+
+/* 为 burgerContainer 添加样式 */
+.burgerContainer {
+  text-align: center;
+  margin-bottom: 50px; /* 添加下方间距，可以根据需要调整数值 */
+}
+
+h2{
+  color: #593521;
+}
+
+p{
+  color: #593521;
+  font-style: italic;
+}
