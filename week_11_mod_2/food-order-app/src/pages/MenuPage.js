@@ -1,5 +1,4 @@
 import React from 'react';
-import fetchData from '../data';
 import CountButton from '../components/CountButton';
 import styled from 'styled-components';
 import HoverText from '../components/HoverText';
@@ -11,12 +10,22 @@ const Wrapper = styled.div`
    flex-direction: row;
 `;
 
-const MenuPage = ({ menuData, onAddToCart }) => {
-
+const MenuPage = ({ menuData, cartData, onAddToCart }) => {
+  // If onAddToCart is not defined, print an error message
   if (!onAddToCart) {
     console.error("onAddToCart is not defined")
   }
+  
+  function getInitialCount(id) {
+    //get initial count from the cart through cartData.id
+    const existing = cartData[id]
+    if (existing) {
+      return existing.count
+    }
+    return 1
+  }
 
+  // console.log(menuData)
   return (
     <div>
       <h1>Menu</h1>
@@ -29,7 +38,8 @@ const MenuPage = ({ menuData, onAddToCart }) => {
           </div>
           <Wrapper>
             <aside>
-              <CountButton item={item} onAddToCart={onAddToCart} price={item.price} />
+              {/* Pass the onAddToCart function and price to the CountButton component */}
+              <CountButton item={item} count={getInitialCount(item.id)} onAddToCart={onAddToCart} price={item.price} />
             </aside>
           </Wrapper>
         </div>

@@ -20,16 +20,16 @@ const StyledButton = styled.button`
   transition: background-color 0.3s ease; 
   margin:0 5px;
 
-  /* 悬停样式 */
+  
   &:hover {
-    background-color: #8C611E; /* 悬停时的背景颜色 */
+    background-color: #8C611E; 
   }
 `;
 
 
 
-const CountButton = ({ item, price, onAddToCart }) => {
-  const [currentCount, setCurrentCount] = useState(1);
+const CountButton = ({ item, count, price, onAddToCart }) => {
+  const [currentCount, setCurrentCount] = useState(count);
   const [currentPrice, setCurrentPrice] = useState(price);
 
   const handleIncrement = () => {
@@ -44,15 +44,19 @@ const CountButton = ({ item, price, onAddToCart }) => {
     }
   };
 
+  // Handle adding the item to the cart
   const handleAddToCart = () => {
     console.log('Adding item to cart:', item);
+    // Check if the onAddToCart callback function is defined
     if (onAddToCart) {
-      onAddToCart({ ...item, quantity: currentCount, price: currentPrice }); // 添加了 'price' 属性
+      // If onAddToCart is defined, call the callback function with the item information and the currentCount
+      onAddToCart({...item}, currentCount)
     } else {
+      // If onAddToCart is not defined, log an error message to the console
       console.error("onAddToCart is not defined")
     }
   };
-
+  console.log(currentCount)
   return (
     <div className="countbutton">
       <StyledButton onClick={handleIncrement}> + </StyledButton>

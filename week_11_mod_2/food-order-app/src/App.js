@@ -12,26 +12,28 @@ import fetchData from './data'; // Import the fetchData function
 
 const App = () => {
   const [menuData, setMenuData] = useState([]);// State to store menu data
-  const [cartItems, setCartItems] = useState([]); // State to store items in the cart
-  
-  // create a state object to track the total count of each item selecetd 
-  // const cartData =[
-  //   {id:0, ItemData:item, count:1},
-  //   {id:1, ItemData:item, count:1},
-  //   {id:2, ItemData:item, count:1},
-  //   {id:3, ItemData:item, count:1},
-  //   {id:4, ItemData:item, count:1},
-  //   {id:5, ItemData:item, count:1},
-  //   {id:6, ItemData:item, count:1},
-  //   {id:7, ItemData:item, count:1},
-  //   {id:8, ItemData:item, count:1},
-  //   {id:9, ItemData:item, count:1},
-  //   {id:10, ItemData:item, count:1},
-  // ]
+  const cartData ={ } 
+  // { id => { item: ..., count: ... } }
 
-  const addToCart = (item ,count) => {
-    console.log('Adding item to cart:', item);
-    setCartItems((prevCartItems) => [...prevCartItems, item]);  // Add the selected item to the cart
+  const addToCart = (item, count) => {
+    console.log(`Adding ${count} item(s) to cart:`, item);
+    
+    //grab item info through itemid, check if they are in the cart
+    let existing = cartData[item.id]
+    //if they are in cart, set the count number
+    if (existing) {
+      existing.count = count;
+      if (existing.count <= 0) {
+        // remove it - if the user decreased the count to zero 
+        delete cartData[item.id]
+      }
+    } else {
+      // cartdata = { item.id => { item: ..., count: ... } }
+      cartData[item.id] = { item: item, count: count }
+    }
+
+    
+    // setCartItems((prevCartItems) => [...prevCartItems, item]);  // Add the selected item to the cart 
   };
 
   useEffect(() => {
@@ -52,8 +54,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           {/* Pass the menuData to MenuPage */}
-          <Route path="/menu" element={<MenuPage menuData={menuData} onAddToCart={addToCart}  />} />
-          <Route path="/cart" element= {<Cart items={cartItems}  />} />
+          <Route path="/menu" element={<MenuPage menuData={menuData} cartData={cartData} onAddToCart={addToCart}  />} />
+          <Route path="/cart" element= {<Cart cartData={cartData}  />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
