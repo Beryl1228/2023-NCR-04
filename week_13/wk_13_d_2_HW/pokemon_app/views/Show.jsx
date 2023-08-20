@@ -1,37 +1,54 @@
 const React = require('react');
 
 const pokemonStyle = {
-    color: '#ffcc00',             
-    backgroundColor: '#ff3333',   
-    fontSize: '18px',             
-    fontWeight: 'bold',           
-    borderRadius: '20px',         
-    padding: '12px',              
-    border: '2px solid #3333cc'   
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ff3333',
+    width: '500px',
+    height: '500px',
+    border: '2px solid #3333cc',
+    borderRadius: '50%',
+    margin: '0 auto',
 };
 
+const imgContainerStyle = {
+    width: '80%',  // Adjust the width as needed
+    height: 'auto', 
+};
 
-const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+const imgStyle = {
+    width: '100%',  // Adjust the width as needed
+    height: 'auto', 
+    minWidth: '200px' // Auto adjust the height to maintain aspect ratio
+};
+
+const mystyle = {
+    fontSize: '18px',
+    color: '#3333cc',
+    fontWeight: 'bold',
+    textAlign: 'center',
 };
 
 class Show extends React.Component {
   render() {
-      const { pokemon } = this.props;
+    const pokemon = this.props.pokemon;
+
+    const backToIndexLink = `/pokemon`;
       return (
-              <div style={myStyle}>
+              <div style={mystyle}>
                   <h1>Gotta Catch 'Em All</h1>
-                    { <div>
-                      {pokemon.map((pokemon, i) => {
-                          return (
-                            <><h2 key={pokemon.id}>{capitalizeFirstLetter(pokemon.name)}</h2><img src={`pokemon.img`} alt="pokemon picture"
-                                  style={{ width: '50px', height: '50px', marginRight: '10px' }} /></>
-                          );
-                      })}
-                  </div> }
-                  {/* <nav>
-    <a href="/fruits/new">Create a New Fruit</a>
-</nav> */}
+                  <h2 style={{ color: '#ffcc00' }}>{pokemon.name}</h2>
+                <div style={{ ...pokemonStyle }}>
+                    <div style={{ ...imgContainerStyle }}>
+                        <img
+                            src={pokemon.img}
+                            alt={pokemon.name}
+                            style={{ ...imgStyle }}
+                        />
+                    </div>
+                </div>
+                <a href={backToIndexLink}>back</a>
               </div>
       );
   }

@@ -1,4 +1,5 @@
 const React = require('react');
+const uuid = require('uuid');
 
 const pokemonStyle = {
     color: '#ffcc00',
@@ -32,9 +33,9 @@ class Index extends React.Component {
               <div style={pokemonStyle}>
                   <h1>See All The Pokemon!</h1>
                   { <ul>
-                      {pokemon.map((pokemon, i) => {
+                      {pokemon.map((pokemon, index) => {
                           return (
-                            <li><a href={`/pokemon/${i}`}
+                            <li key={uuid.v4()}><a href={`/pokemon/${index}`}
                                  style={linkStyle}>
                                 {capitalizeFirstLetter(pokemon.name)}
                               </a>
@@ -42,9 +43,6 @@ class Index extends React.Component {
                           );
                       })}
                   </ul> }
-                  {/* <nav>
-    <a href="/fruits/new">Create a New Fruit</a>
-</nav> */}
               </div>
       );
   }
