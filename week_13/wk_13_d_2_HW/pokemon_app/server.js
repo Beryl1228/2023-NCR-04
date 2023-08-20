@@ -23,6 +23,10 @@ app.get('/pokemon/:id',(req, res)=>{
     res.send(req.params.id)
 })
 
+app.get('/pokemon',(req, res)=>{
+    // res.send(pokemon)
+    res.render('Show',{ pokemon:pokemon })
+})
 
 //set a variable of portto 3000
 app.listen(3000,() => {
