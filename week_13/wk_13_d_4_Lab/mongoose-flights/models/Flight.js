@@ -2,6 +2,8 @@ const mongoose = require('./connection');
 
 const { Schema, model } = mongoose;
 
+const destinationSchema = require('./Destination');
+
 const flightSchema = new Schema({
     airline: {
         type: String,
@@ -20,6 +22,18 @@ const flightSchema = new Schema({
         type: Date,
         required: true,
         default: () => new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) // One year from now
+    },
+
+    airport: {
+        type: String,
+        enum: ['AUS', 'DAL', 'LAX', 'SAN', 'SEA'],
+        required: [true, "Please select a valid airport"],
+        default: 'SAN'
+    },
+
+    destinations: {
+        type: [destinationSchema.schema], // Set type to an array of destinationSchema
+        default: [] // Default value as an empty array
     }
 });
 

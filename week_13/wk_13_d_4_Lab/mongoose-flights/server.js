@@ -3,6 +3,7 @@ const express = require("express"); // import express
 const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const Flight = require('./models/Flight.js')
+const Destination = require('./models/Destination.js');
 const path = require("path"); // built in node module we use to resolve paths more on this when we use it
 
 
