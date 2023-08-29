@@ -13,9 +13,9 @@ db.on('open', () => {
 
     // Delete all flights
     Flight.deleteMany({})
-        .then(() => {
+        .then(data => {
             Flight.create(starterFlights)
-                .then(() => {
+                .then(data => {
                     db.close();
                 })
                 .catch(error => {
